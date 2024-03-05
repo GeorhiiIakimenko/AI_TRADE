@@ -19,8 +19,8 @@ period = n_days
 
 @st.cache_data
 def load_data(stock):
-    data = yfinance.download(stock, START, TODAY)
-    data.reset_index(inplace=True)
+    data_trade = yfinance.download(stock, START, TODAY)
+    data_trade.reset_index(inplace=True)
     return data
 
 
@@ -53,7 +53,7 @@ st.plotly_chart(fig2)
 
 # Визуализация данных о VIX (индекс волатильности)
 st.subheader("VIX (Volatility Index) Data")
-st.markdown("Этот график показывает изменения в индексе волатильности (VIX), который используется для измерения волатильности на финансовых рынках.")
+st.markdown("Этот график показывает изменения в индексе волатильности (VIX)")
 fig_vix = go.Figure()
 fig_vix.add_trace(go.Scatter(x=vix_data.index, y=vix_data["Close"], mode='lines', name='VIX'))
 fig_vix.update_layout(
@@ -63,4 +63,3 @@ fig_vix.update_layout(
     template="plotly_white"  # Используем светлую тему для лучшей читаемости
 )
 st.plotly_chart(fig_vix)
-
