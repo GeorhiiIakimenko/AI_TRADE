@@ -19,8 +19,8 @@ period = n_days
 
 @st.cache_data
 def load_data(stock):
-    data_trade = yfinance.download(stock, START, TODAY)
-    data_trade.reset_index(inplace=True)
+    data = yfinance.download(stock, START, TODAY)
+    data.reset_index(inplace=True)
     return data
 
 
